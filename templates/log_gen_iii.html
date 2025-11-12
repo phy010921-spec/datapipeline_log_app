@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block main_area %}
+    <form action="{% url 'log_app:btn_gen_iii_click' %} " method="post" >
+        {% csrf_token %}
+        <!-- text, form-control -->
+        <div class="form-group row">
+            <div class="m-3">
+                <label for="numlog" class="col-sm-2 text-sm-right"># of logdata</label>
+                <input type="text" id="numlog" name="numlog" class="form-control">
+
+            </div>
+        </div>
+        <button type="submit" class="m-3 btn btn-light">Send</button>
+    </form>
+
+    {% if logs %}
+        {% for log in logs %}
+            <div>
+                {{ log.time }} - {{ log.user_id }} - {{ log.service_menu }} - {{ log.stars }} - {{ log.access_type }} - {{ log.isReservation }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

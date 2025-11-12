@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block main_area %}
+<form action="{% url 'log_app:btn_gen_ii_click' %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="userid" class="form-label">user id</label>
+        <input type="text" class="form-control" id="userid" name="userid" aria-describedby="userid">
+    </div>
+    <div class="mb-3">
+        <label for="servicemenu" class="form-label">serivce menu</label>
+        <select class="form-select" id="servicemenu" name=servicemenu required>
+          <option selected disabled value="">Choose...</option>
+          <option>일정보기</option>
+          <option>호텔예약</option>
+          <option>둘러보기</option>
+          <option>예약문의</option>
+          <option>예약해지</option>
+          <option>상담연결</option>
+          <option>추천하기</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="stars" class="form-label">star score(1-5)</label>
+        <input type="text" class="form-control" id="stars" name="stars" aria-describedby="userid">
+    </div>
+
+    <div class="mb-3">
+        <label for="accesstype" class="form-label">access type</label>
+        <select class="form-select" id="accesstype" name=accesstype required>
+          <option selected disabled value="">Choose...</option>
+          <option>web</option>
+          <option>android</option>
+          <option>ios</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="reserv" class="form-label">Reservation</label>
+        <select class="form-select" id="reserv" name=reserv required>
+          <option selected disabled value="">Choose...</option>
+          <option>yes</option>
+          <option>no</option>
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
